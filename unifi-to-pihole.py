@@ -65,15 +65,15 @@ dns_entries = []
 print("Processing client data...")
 for client in clients:
     ip = client.get('last_ip')
-    hostname = client.get('hostname')
     name = client.get('name')
+    hostname = client.get('hostname')
     mac = client.get('mac')
 
     if ip:
-        if hostname:
-            dns_name = hostname.lower().replace(" ", "-")
-        elif name:
+        if name:
             dns_name = name.lower().replace(" ", "-")
+        elif hostname:
+            dns_name = hostname.lower().replace(" ", "-")
         else:
             dns_name = mac.replace(":", "").lower()
 
